@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lmsys-pref"
+version = "0.1.0"
+description = "LoRA fine-tuning of decoder LLMs for pairwise human-preference prediction (LMSYS Chatbot Arena)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "torch",
+  "transformers>=4.44",
+  "peft>=0.12",
+  "accelerate>=0.33",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+quant = ["bitsandbytes"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
